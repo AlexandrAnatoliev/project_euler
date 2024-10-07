@@ -1,0 +1,6 @@
+# main_run
+#!/bin/bash
+gcc -c ../main.c
+gcc -o ../main main.o -L../../timerlib -ltimer
+rm main.o
+../main
