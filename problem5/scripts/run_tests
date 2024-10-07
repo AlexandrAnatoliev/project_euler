@@ -1,6 +1,0 @@
-# run_tests
-#!/bin/bash
-./compile_and_run iter_test.c
-./compile_and_run rec_test.c
-./compile_and_run get_nok_test.c
-rm ./a.out	# temporary file is deleted
