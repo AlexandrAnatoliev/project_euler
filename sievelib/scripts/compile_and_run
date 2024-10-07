@@ -1,0 +1,8 @@
+# compile_and_run 
+#!/bin/bash
+echo	# separate the output with an empty line
+echo "compilation" "$1"
+PATH_TO_FOLDER="../tests/"
+gcc $PATH_TO_FOLDER"$1"
+echo "running" "$1"
+./a.out
