@@ -1,6 +1,5 @@
 # run_tests 
 #!/bin/bash
-./compile_and_run malloc_free_test.c
-./compile_and_run push_test.c
-./compile_and_run next_prime_test.c
-rm ./a.out	# temporary file is deleted
+./file_stat_lib_run malloc_free_test sieve
+./file_stat_lib_run push_test sieve
+./file_stat_lib_run next_prime_test sieve

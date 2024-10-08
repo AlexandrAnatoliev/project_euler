@@ -1,7 +1,7 @@
 // next_prime_test.c
 
 #include <stdio.h>
-#include "../source/sievelib.c"	// TODO заменить потом на библиотеку.h
+#include "../sievelib.h"
 
 int main(void)
 {
