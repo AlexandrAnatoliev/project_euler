@@ -1,0 +1,12 @@
+# create_static_lib // писать название файла без расирения и lib sievelib.c -> sieve
+
+#!/bin/bash
+echo	# separate the output with an empty line
+echo "compilation" "$1lib.c" "into" "$1lib.o object file"
+PATH_TO_FOLDER="../source/"
+gcc -c $PATH_TO_FOLDER"$1lib.c"		
+echo "create" "lib$1.a" "static lirary"
+ar r lib$1.a $1lib.o
+mv lib$1.a ..
+rm $1lib.o
+
