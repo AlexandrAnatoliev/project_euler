@@ -11,7 +11,7 @@
 typedef struct sieve	// структрура "решето"
 {
 	int len_arr;		// длина массива
-	int past_prime;		// значение последнего простого числа в массиве
+	int last_prime;		// значение последнего простого числа в массиве
 						// до него статус чисел определен:
 						//		0 - простое
 						//		1 - составное
@@ -30,11 +30,12 @@ bool sieve_free(sieve_t *sieve);
 // precondition:	принимает указатель на структуру
 // postcondition:	возвращает true в случае успеха
 
-bool sieve_push_prime(sieve_t *sieve);
+bool sieve_push_prime(sieve_t *sieve, int prime);
 // operation:		вносит простое число в структуру, отмечает все составные до конца массива
 // precondition:	sieve	- указатель на структуру
+//					prime	- простое число вносимое в структуру
 // postcondition:	возвращает true, если все удачно
-//					false и сообщение об ошибке иначе
+//					иначе - сообщение об ошибке иначе
 
 int sieve_get_next_prime(sieve_t *sieve);
 // operation:		проходит по массиву и возвращает значение следующего простого числа

@@ -15,7 +15,7 @@ sieve_t* sieve_init_malloc(int max_num)
 	}
 
 	sieve->len_arr = max_num + 1;			// вводим начальные значения
-	sieve->past_prime = 0;					// обнуляем поля
+	sieve->last_prime = 0;					// обнуляем поля
 	
 	for(int i = 0; i <= max_num; i++)
 		sieve->arr[i] = 0;
@@ -30,17 +30,30 @@ bool sieve_free(sieve_t *sieve)
 	return true;
 }
 
-bool sieve_push_prime(sieve_t *sieve)
-// operation:		вносит простое число в структуру, отмечает все составные до конца массива
-// precondition:	sieve	- указатель на структуру
-// postcondition:	возвращает true, если все удачно
-//					false и сообщение об ошибке иначе
+bool sieve_push_prime(sieve_t *sieve, int prime)
 {
-		
+	assert(prime > 1);						// первое простое число - 2
+	assert(prime < sieve->len_arr);			// проверка невыхода за пределы массива
+
+	sieve->last_prime = prime;
+	for(int i = 2 * prime; i < sieve->len_arr; i += prime)
+		sieve->arr[i] = 1;					// отмечаем составные числа
+	
+	return true;
 }
 
-int sieve_get_next_prime(sieve_t *sieve);
+int sieve_get_next_prime(sieve_t *sieve)
 // operation:		проходит по массиву и возвращает значение следующего простого числа
 // precondition:	sieve	- указатель на структуру "решето" 
 // postcondition:	возвращает 0 в случае, если до конца массива простых чисел нет
+{
+	int next_prime = 0;
 
+	for(int i = sieve->last_prime + 1; i < sieve->len_arr; i++)
+	{
+		if(sieve->arr[i] == 0)
+			return next_prime = i;
+	}
+
+	return 0;
+}
