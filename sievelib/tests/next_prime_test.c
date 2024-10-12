@@ -1,4 +1,4 @@
-// next_prime_test.c
+// next_prime_test.c - тест для проверки работоспособности функции sieve_get_next_prime() 
 
 #include <stdio.h>
 #include "../sievelib.h"

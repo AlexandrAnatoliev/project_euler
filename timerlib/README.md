@@ -2,7 +2,7 @@
 
 The library consists of two files:
 * timerlib.h	- library header file
-* timerlib.a	- object file
+* libtimer.a	- object file
 
 The project contains two folders also: 
 * sourse	- contains a file with the source code of the library functions

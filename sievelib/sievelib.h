@@ -3,10 +3,10 @@
 #ifndef SIEVE
 #define SIEVE
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <assert.h>
+#include <assert.h>		// for assert()
+#include <stdbool.h>	// for use bool
+#include <stdio.h>		// for use printf()
+#include <stdlib.h>		// for malloc()
 
 typedef struct sieve	// структрура "решето"
 {

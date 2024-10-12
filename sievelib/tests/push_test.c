@@ -1,4 +1,4 @@
-// push_test.c
+// push_test.c - тест функции sieve_push_prime()
 
 #include <stdio.h>
 #include "../sievelib.h"

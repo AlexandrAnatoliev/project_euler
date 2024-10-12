@@ -1,4 +1,4 @@
-// malloc_free_test.c
+// malloc_free_test.c - тест для проверки работы функций sieve_init_malloc() и sieve_free()
 
 #include <stdio.h>
 #include "../sievelib.h"
