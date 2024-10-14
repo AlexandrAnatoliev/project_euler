@@ -69,61 +69,72 @@ The script recompiles the test file and runs it:
 The script is used to recompile and run all test files at once. Contains a list of tests to be called.
 
 Runs by the command:
+
 `./run_tests`
 
 ### Using scripts
 
-После каждого внесения изменений в код библиотеки, перекомпилируем ее:
+After each change in the library code, we recompile it:
+
 `./create_static_lib sieve`
 
-... и запускаем тесты:
+... and run the tests:
+
 `./run_tests`
  
 
-## Создание статической библиотеки (без использования скриптов)
+## Creating a static library (without using scripts)
 
-Все действия выполняем в каталоге `sievelib/`.
+All actions are performed in the `sievelib/` directory.
 
-Получаем объектный файл библиотеки:
+We get the library object file:
+
 `gcc -c ./source/sievelib.c`
 
-В каталоге `sievelib/` должен появиться файл `sievelib.o`.
+The `sievelib.o` file should appear in the `sievelib/` directory.
 
-Создаем статическую библиотеку с помощью утилиты **ar**:
+Create a static library using the **ar** utility:
+
 `ar r libsieve.a sievelib.o`
-* `r`           - позволяет вставить файлы в архив, если архива нет, то он создается;
-* `libsieve.a`  - имя создаваемого архива, в операционных системах GNU/Linux должно иметь префикс **lib** и расширение **.a**;
-* `libsieve.o`  - файл из которого создается архив.
 
-Объектный файл можно удалить:
+* `r`           - allows you to insert files into an archive; if there is no archive, then it is created;
+* `libsieve.a`  - the name of the archive being created, in GNU/Linux operating systems it must have the prefix **lib** and the extension **.a**;
+* `libsieve.o`  - the file from which the archive is created.
+
+The object file can be deleted:
+
 `rm libsieve.o`
 
-Содержимое каталога в итоге должно содержать:
+The contents of the directory should ultimately contain:
 ```
-libsieve.a  - статическая библиотека
-sievelib.h  - заголовочный файл библиотеки
-source/     - папка с исходным кодом функций библиотеки (для работы не нужна, можно и удалить)
+libsieve.a  // static library
+sievelib.h  // library header file
+source/     // folder with the source code of library functions (not needed for work and can be deleted)
 ```
 
 
-## Использование библиотеки в программе 
-В данном случае компилируем с библиотекой файлы из каталога `tests/.
+## Using the library in a program
+In this case, we compile files from the `tests/` directory with the library.
 
-Все действия выполняем в каталоге `sievelib/`.
+All actions are performed in the `sievelib/` directory.
 
-Получаем объектный файл из тестового файла:
+We get the object file from the test file:
+
 `gcc -c tests/push_test.c`
 
-В каталоге `sievelib/` должен появиться файл `push_test.o`.
+The `sievelib/` directory should contain a `push_test.o` file.
 
-Компилируем его с библиотекой:
+We compile it with the library:
+
 `gcc -o push_test push_test.o -L. -lsieve` 
-* `-o push_test`- компилируется исполняемый файл `push_test`;
-* `push_test.o` - из объектного файла;
-* `-L.`         - после **-L** пишем адрес каталога, где находится библиотека (**.** - текущий каталог);
-* `-lsieve`     - после **-l** пишется имя библиотеки без префикса **lib** и суффикса **.a**.
 
-В каталоге `sievelib` появляется исполняемый файл `push_test`, который можно запустить командой:
+* `-o push_test`- the `push_test` executable file is compiled;
+* `push_test.o` - from an object file;
+* `-L.`         - after **-L** we write the path to the library directory (**.** - current directory);
+* `-lsieve`     - after **-l**, the library name is written without the **lib** prefix and **.a** suffix.
+
+An `push_test`executable file appears in the `sievelib/` directory and can be runs by the command:
+
 `./push_test`
 
 
