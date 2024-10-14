@@ -36,9 +36,13 @@ bool sieve_push_prime(sieve_t *sieve, int prime)
 	assert(prime < sieve->len_arr);			// проверка невыхода за пределы массива
 
 	sieve->last_prime = prime;
-	for(int i = 2 * prime; i < sieve->len_arr; i += prime)
-		sieve->arr[i] = 1;					// отмечаем составные числа
-	
+    
+    if(prime * prime < sieve->len_arr)      // после prime == sqrt(len_arr) все составные числа уже отмечены
+    {
+        for(int i = 2 * prime; i < sieve->len_arr; i += prime)
+		    sieve->arr[i] = 1;			    // отмечаем составные числа
+	}
+
 	return true;
 }
 
@@ -48,9 +52,12 @@ int sieve_get_next_prime(sieve_t *sieve)
 // postcondition:	возвращает 0 в случае, если до конца массива простых чисел нет
 {
 	int next_prime = 0;
+    
+    if(sieve->last_prime == 2)              // после 2 следующее простое число 3
+        return 3;
 
-	for(int i = sieve->last_prime + 1; i < sieve->len_arr; i++)
-	{
+	for(int i = sieve->last_prime + 2; i < sieve->len_arr; i += 2)
+	{                                       // проверяем только нечетные числа
 		if(sieve->arr[i] == 0)
 			return next_prime = i;
 	}
