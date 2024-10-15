@@ -1,0 +1,19 @@
+# file_din_lib_run - скрипт для компиляции файла с динамической библиотекой и его запуска
+# писать название файлов без расширения и префикса lib 
+# /libsieve_din.a	-> sieve_din
+# /test.c 		-> test
+# file_din_lib_run test sieve_din -> ./test
+
+#!/bin/bash
+echo	# separate the output with an empty line
+echo "compilation \"$1.c\" into \"$1.o\" object file"
+PATH_TO_TESTS="../tests/"
+gcc -c $PATH_TO_TESTS"$1.c"
+echo "link \"$1.o\" file with \"lib$2.so\" dinamic library"
+gcc -o $1 $1.o -L.. -l$2 -Wl,-rpath,..
+echo "run \"$1\" file"
+echo	# separate the output with an empty line
+./$1
+echo	# separate the output with an empty line
+echo "delete \"$1.o\" and \"$1\" temporary file"
+rm $1.o $1
