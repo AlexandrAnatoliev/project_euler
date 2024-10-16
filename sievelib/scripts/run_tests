@@ -1,5 +1,0 @@
-# run_tests - перекомпиляция тестовых файлов и их запуск 
-#!/bin/bash
-./file_stat_lib_run malloc_free_test sieve
-./file_stat_lib_run push_test sieve
-./file_stat_lib_run next_prime_test sieve

@@ -1,17 +1,17 @@
 # create_static_lib - скрипт для создания статической библиотеки
 # писать название файла без расширения и lib 
 # /sievelib.c -> sieve
-# create_static_lib sieve -> libsieve.a
+# create_static_lib sieve -> libsieve_stat.a
 
 #!/bin/bash
 echo	# separate the output with an empty line
 echo "compilation \"$1lib.c\" into \"$1lib.o\" object file"
 PATH_TO_FOLDER="../source/"
 gcc -c $PATH_TO_FOLDER"$1lib.c"		
-echo "create \"lib$1.a\" static lirary"
-ar r lib$1.a $1lib.o
-echo "move \"lib$1.a\" library to working directory"
-mv lib$1.a ..
+echo "create \"lib$1_stat.a\" static library"
+ar r lib$1_stat.a $1lib.o
+echo "move \"lib$1_stat.a\" library to working directory"
+mv lib$1_stat.a ..
 echo "delete \"$1lib.o\" temporary file"
 rm $1lib.o
 
