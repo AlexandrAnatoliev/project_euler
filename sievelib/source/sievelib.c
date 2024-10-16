@@ -39,8 +39,10 @@ bool sieve_push_prime(sieve_t *sieve, int prime)
     
     if(prime * prime < sieve->len_arr)      // после prime == sqrt(len_arr) все составные числа уже отмечены
     {
-        for(int i = 2 * prime; i < sieve->len_arr; i += prime)
+        for(int i = prime * prime; i < sieve->len_arr; i += prime)
 		    sieve->arr[i] = 1;			    // отмечаем составные числа
+                                            // числа кратные от (2 * prime) до (prime * prime)
+                                            // отмечены как составные ранее (при внесении чисел меньших prime)
 	}
 
 	return true;
