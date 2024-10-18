@@ -1,17 +1,17 @@
-# create_dinamic_lib - скрипт для создания динамической библиотеки
+# create_dynamic_lib - скрипт для создания динамической библиотеки
 # писать название файла без расширения и lib 
 # /sievelib.c -> sieve
-# create_dinamic_lib sieve -> libsieve_din.so
+# create_dynamic_lib sieve -> libsieve_dyn.so
 
 #!/bin/bash
 echo	# separate the output with an empty line
 echo "compilation \"$1lib.c\" into \"$1lib.o\" object file"
 PATH_TO_FOLDER="../source/"
 gcc -c -fPIC $PATH_TO_FOLDER"$1lib.c"		
-echo "create \"lib$1_din.so\" dinamic library"
-gcc -shared -o lib$1_din.so $1lib.o
-echo "move \"lib$1_din.so\" library to working directory"
-mv lib$1_din.so ..
+echo "create \"lib$1_dyn.so\" dynamic library"
+gcc -shared -o lib$1_dyn.so $1lib.o
+echo "move \"lib$1_dyn.so\" library to working directory"
+mv lib$1_dyn.so ..
 echo "delete \"$1lib.o\" temporary file"
 rm $1lib.o
 

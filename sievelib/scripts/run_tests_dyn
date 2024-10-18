@@ -1,0 +1,5 @@
+# run_tests_dyn - перекомпиляция тестовых файлов и их запуск 
+#!/bin/bash
+./file_dyn_lib_run malloc_free_test sieve_dyn
+./file_dyn_lib_run push_test sieve_dyn
+./file_dyn_lib_run next_prime_test sieve_dyn
